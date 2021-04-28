@@ -1,0 +1,86 @@
+@use './mixins';
+
+.main {
+  @include mixins.fill;
+  background-color: var(--clr-neutral-500);
+
+  & > .bg-image {
+    @include mixins.fill(absolute);
+    background: black url(/images/bg_small.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 400%;
+    background-position: center;
+    box-shadow: inset 0 0 4rem 1rem black;
+    opacity: 0.2;
+    filter: blur(5px);
+    z-index: 1;
+  }
+
+  font-family: var(--ff-sansserif);
+  line-height: 1.6;
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1;
+  }
+
+  min-height: 100%;
+}
+
+.page-container {
+  @include mixins.fill;
+  min-height: 100%;
+
+  opacity: 1;
+  z-index: 2;
+
+  & > * {
+    min-height: 100%;
+  }
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  background-color: var(--clr-primary-200);
+
+  display: flex;
+  flex-wrap: wrap;
+
+  & > h1 {
+    flex-basis: 12ch;
+
+    font-family: var(--ff-display);
+    padding-inline: 1rem;
+  }
+
+  & > nav {
+    flex: 1 1 70rem;
+    position: sticky;
+    top: 0;
+    display: flex;
+    min-height: 2rem;
+    padding-inline: max(10%, 1rem);
+    & > * {
+      flex: 1 1 100%;
+    }
+
+    .nav-button {
+      font-size: 1.1em;
+      display: block;
+      position: relative;
+
+      & > span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}

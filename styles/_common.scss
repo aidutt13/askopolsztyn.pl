@@ -1,0 +1,106 @@
+@use './mixins';
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+.image-gallery {
+  background-color: var(--clr-primary-300);
+  box-shadow: 0 0 16px 4px var(--clr-neutral-500);
+
+  img {
+    display: block;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+.image-gallery {
+  width: 100%;
+}
+
+.image-gallery-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: center center;
+}
+
+.fullscreen .image-gallery-slide img {
+  max-height: 100vh;
+}
+
+video {
+  max-width: 100%;
+  box-shadow: 0 0 16px 4px var(--clr-neutral-500);
+  background-color: var(--clr-primary-400);
+}
+
+.ad {
+  box-shadow: 0 0 16px 4px var(--clr-neutral-500);
+  max-width: 100%;
+}
+
+.copyable {
+  text-decoration: underline solid;
+  cursor: pointer;
+
+  &:hover {
+    color: blue;
+  }
+}
+
+#copy {
+  padding: 0;
+  margin: 0;
+  @include mixins.fill(fixed);
+  border: none;
+  outline: none;
+  appearance: none;
+  background-color: transparent;
+  color: transparent;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  font-size: 1px;
+  &::selection,
+  &::-moz-selection {
+    color: transparent;
+    background: transparent;
+  }
+  resize: none;
+  cursor: default;
+  z-index: -2;
+}
+
+#msgbox {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  width: 200px;
+  height: 50px;
+  background-color: var(--clr-neutral-100);
+  color: var(--clr-neutral-500);
+  font-size: 16px;
+
+  display: grid;
+  place-items: center;
+
+  & > span {
+    width: auto;
+    height: auto;
+  }
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+
+  transition: transform 500ms ease-in-out;
+}
+
+.msgbox-fadein {
+  transform: scale(1);
+}
+.msgbox-fadeout {
+  transform: scale(0);
+}

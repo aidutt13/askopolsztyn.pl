@@ -1,0 +1,39 @@
+@use './colors';
+@use './fonts';
+
+@use './common';
+
+:root {
+  @each $name, $colors in colors.$colors {
+    @each $clr, $val in $colors {
+      --clr-#{$name}-#{$clr}: #{$val};
+    }
+  }
+
+  @each $fname, $fval in fonts.$fonts {
+    --ff-#{"" + $fname}: #{$fval};
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body,
+body > div:first-child,
+div#__next,
+div#__next > div {
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

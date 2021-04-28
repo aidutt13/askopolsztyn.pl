@@ -1,0 +1,178 @@
+@use './mixins';
+@use './mqueries' as *;
+
+.section-parent {
+  min-height: 100%;
+  font-size: 16px;
+  position: relative;
+  height: 100%;
+
+  section {
+    padding: 0 min(12rem, 10%);
+    min-height: 100%;
+  }
+
+  h1 {
+    font-family: var(--ff-display);
+    font-size: 2em;
+  }
+
+  @include desktop {
+    & {
+      font-size: 24px;
+    }
+  }
+
+  @include tablet {
+    & {
+      font-size: 24px;
+    }
+  }
+
+  footer {
+    display: none;
+    font-size: 1rem;
+    padding-left: 4rem;
+    @include desktop {
+      & {
+        display: block;
+      }
+    }
+
+    background-color: var(--clr-neutral-500);
+    color: var(--clr-neutral-100);
+  }
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.splash {
+  justify-content: center;
+  // align-items: center;
+  font-family: var(--ff-display);
+  color: var(--clr-neutral-100);
+  text-transform: uppercase;
+
+  h1,
+  h2,
+  h3 {
+    display: block;
+    max-height: 1em;
+    padding: 0;
+    margin: 0;
+  }
+
+  h1 {
+    flex: 0 1 8ch;
+    max-width: 8ch;
+    font-size: 4em;
+  }
+
+  h2 {
+    font-size: 2em;
+    max-width: 32ch;
+    margin: 1em 0 2em 0;
+    font-family: var(--ff-sansserif);
+    text-transform: none;
+    margin-bottom: 4rem;
+  }
+
+  .continue-button {
+    display: block;
+    max-width: 64ch;
+    align-self: center;
+    appearance: none;
+    border: none;
+    outline: none;
+    padding: 1rem 4rem;
+    font-size: 1.5em;
+
+    @include desktop {
+      & {
+        font-size: 1em;
+      }
+    }
+
+    animation: continue-button-appear 2s ease-in-out;
+
+    transition: background-color 200ms ease-in-out;
+    background-color: var(--clr-primary-200);
+    color: var(--clr-neutral-500);
+
+    font-family: var(--ff-sansserif);
+    font-weight: 700;
+
+    cursor: pointer;
+
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent;
+
+    &:hover {
+      background-color: var(--clr-primary-100);
+      border-color: var(--clr-primary-100);
+    }
+
+    &:focus {
+      background-color: var(--clr-primary-100);
+      border-color: var(--clr-primary-300);
+    }
+
+    &:active {
+      background-color: var(--clr-primary-300);
+      border-color: var(--clr-primary-100);
+    }
+  }
+}
+
+.info {
+  background-color: var(--clr-primary-400);
+  color: var(--clr-neutral-100);
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  height: auto;
+
+  @include desktop {
+    flex-wrap: nowrap;
+  }
+
+  .images {
+    min-height: 40rem;
+  }
+
+  & > * {
+    flex-basis: 100%;
+    margin: 2rem 1rem;
+
+    @include desktop {
+      & {
+        margin: 2rem;
+      }
+    }
+
+    &:first-child {
+      margin-top: 1em;
+    }
+  }
+}
+
+.offer {
+  background-color: var(--clr-primary-300);
+}
+
+.contact {
+  background-color: var(--clr-primary-100);
+  color: var(--clr-neutral-500);
+
+  p:last-of-type {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  h6 {
+    margin: 0;
+  }
+}
